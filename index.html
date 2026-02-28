@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karolina's Investment Guide ☕</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Comic+Neue:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --purple: #6e3a8a;
+    --purple-light: #9b6bb8;
+    --purple-dark: #4a1a6b;
+    --yellow: #f5c518;
+    --yellow-light: #fff3c4;
+    --red: #c0392b;
+    --red-soft: #e74c3c;
+    --blue: #3a7bd5;
+    --teal: #1abc9c;
+    --cream: #fdf6e3;
+    --brown: #5d4037;
+    --brown-light: #8d6e63;
+    --frame-gold: #c9a84c;
+  }
+
+  body {
+    font-family: 'Comic Neue', cursive, sans-serif;
+    background: var(--cream);
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* === HEADER — The One Where Karolina Starts Investing === */
+  .header {
+    background: linear-gradient(135deg, var(--purple-dark) 0%, var(--purple) 50%, var(--purple-light) 100%);
+    padding: 3rem 1.5rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '☕';
+    position: absolute;
+    font-size: 12rem;
+    opacity: 0.06;
+    top: -1rem;
+    right: -1rem;
+    transform: rotate(15deg);
+  }
+
+  .header-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .header-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: dotPulse 2s infinite;
+  }
+  .header-dot:nth-child(1) { background: var(--red-soft); animation-delay: 0s; }
+  .header-dot:nth-child(2) { background: var(--yellow); animation-delay: 0.3s; }
+  .header-dot:nth-child(3) { background: var(--blue); animation-delay: 0.6s; }
+  .header-dot:nth-child(4) { background: var(--teal); animation-delay: 0.9s; }
+  .header-dot:nth-child(5) { background: var(--red-soft); animation-delay: 1.2s; }
+  .header-dot:nth-child(6) { background: var(--yellow); animation-delay: 1.5s; }
+
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.3); opacity: 1; }
+  }
+
+  .episode-tag {
+    font-family: 'Comic Neue', cursive;
+    font-size: 0.85rem;
+    color: var(--yellow);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+  }
+
+  .header h1 {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: var(--yellow);
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    margin-bottom: 0.5rem;
+  }
+
+  .header p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* === PEEPHOLE NAV === */
+  .peephole-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem 1rem;
+    background: var(--brown);
+    flex-wrap: wrap;
+  }
+
+  .peephole-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--frame-gold);
+    color: var(--brown);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+
+  .peephole-link:hover {
+    background: var(--yellow);
+    transform: scale(1.05);
+    border-color: var(--yellow-light);
+  }
+
+  .peephole-link .num {
+    background: var(--brown);
+    color: var(--frame-gold);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+  }
+
+  /* === MAIN CONTENT === */
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* === NEED LIST (What You'll Need) === */
+  .need-box {
+    background: var(--yellow-light);
+    border: 3px dashed var(--yellow);
+    border-radius: 16px;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .need-box h2 {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: var(--brown);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .need-box ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .need-box li {
+    padding: 0.4rem 0;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1.05rem;
+  }
+
+  .need-box li::before {
+    content: '☑️';
+    position: absolute;
+    left: 0;
+  }
+
+  .need-box .reassure {
+    margin-top: 0.8rem;
+    font-style: italic;
+    color: var(--brown-light);
+    font-size: 0.95rem;
+  }
+
+  /* === STEP CARDS === */
+  .step {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-left: 6px solid var(--purple);
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .step:nth-child(odd) { border-left-color: var(--purple); }
+  .step:nth-child(even) { border-left-color: var(--yellow); }
+
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--purple);
+    color: #fff;
+    padding: 0.3rem 1rem 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .step:nth-child(even) .step-badge { background: var(--brown); }
+
+  .step-badge .emoji {
+    font-size: 1.2rem;
+  }
+
+  .step h2 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.4rem;
+    color: var(--purple-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .step .czech-title {
+    font-size: 0.95rem;
+    color: var(--brown-light);
+    font-style: italic;
+    margin-bottom: 1rem;
+  }
+
+  .step .time-tag {
+    display: inline-block;
+    background: var(--yellow-light);
+    color: var(--brown);
+    padding: 0.2rem 0.8rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  /* Numbered instructions inside steps */
+  .instructions {
+    counter-reset: inst;
+    list-style: none;
+    padding: 0;
+  }
+
+  .instructions li {
+    counter-increment: inst;
+    padding: 0.7rem 0 0.7rem 3rem;
+    position: relative;
+    border-bottom: 1px dashed #eee;
+    font-size: 1.05rem;
+  }
+
+  .instructions li:last-child { border-bottom: none; }
+
+  .instructions li::before {
+    content: counter(inst);
+    position: absolute;
+    left: 0;
+    top: 0.6rem;
+    background: var(--purple-light);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .step:nth-child(even) .instructions li::before {
+    background: var(--frame-gold);
+    color: var(--brown);
+  }
+
+  .instructions li strong {
+    color: var(--purple-dark);
+  }
+
+  /* === CALLOUT BOXES === */
+  .callout {
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .callout-relax {
+    background: #e8f8f5;
+    border-left: 4px solid var(--teal);
+  }
+
+  .callout-wait {
+    background: #fef9e7;
+    border-left: 4px solid var(--yellow);
+  }
+
+  .callout-warning {
+    background: #fdedec;
+    border-left: 4px solid var(--red);
+  }
+
+  .callout-info {
+    background: #ebf5fb;
+    border-left: 4px solid var(--blue);
+  }
+
+  .callout .callout-label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .callout .czech {
+    display: block;
+    margin-top: 0.5rem;
+    font-style: italic;
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  /* === DONE SECTION === */
+  .done-section {
+    background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .done-section::before {
+    content: '🎉';
+    position: absolute;
+    font-size: 8rem;
+    opacity: 0.08;
+    top: -0.5rem;
+    left: -0.5rem;
+  }
+
+  .done-section h2 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.8rem;
+    color: var(--yellow);
+    margin-bottom: 1rem;
+  }
+
+  .done-section p {
+    font-size: 1.05rem;
+    margin-bottom: 0.6rem;
+    color: rgba(255,255,255,0.9);
+  }
+
+  .done-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+  }
+
+  .done-flow-step {
+    background: rgba(255,255,255,0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .done-flow-arrow {
+    font-size: 1.2rem;
+    color: var(--yellow);
+  }
+
+  .why-quote {
+    background: rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1.5rem auto 0;
+    max-width: 420px;
+    font-size: 1.2rem;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: var(--yellow);
+    border: 2px solid rgba(255,255,255,0.15);
+  }
+
+  /* === REFERENCE CARD === */
+  .ref-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+
+  .ref-card h3 {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: var(--purple-dark);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .ref-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .ref-table td {
+    padding: 0.6rem 0.5rem;
+    border-bottom: 1px solid #f0ece3;
+    font-size: 0.95rem;
+  }
+
+  .ref-table td:first-child {
+    font-weight: 700;
+    color: var(--brown);
+    width: 40%;
+    white-space: nowrap;
+  }
+
+  .ref-table td:last-child {
+    color: var(--purple-dark);
+  }
+
+  .ref-table tr:last-child td { border-bottom: none; }
+
+  /* === TROUBLESHOOTING === */
+  .trouble {
+    background: var(--yellow-light);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .trouble h3 {
+    font-family: 'Gloria Hallelujah', cursive;
+    color: var(--brown);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .trouble-item {
+    margin-bottom: 0.8rem;
+  }
+
+  .trouble-item strong {
+    color: var(--red);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .trouble-item span {
+    font-size: 0.95rem;
+    color: var(--brown);
+  }
+
+  /* === FOOTER === */
+  .footer {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: var(--brown);
+    color: var(--frame-gold);
+    font-size: 0.85rem;
+  }
+
+  .footer .friends-sign {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 1.1rem;
+    color: var(--yellow);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer a {
+    color: var(--yellow);
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 500px) {
+    .step { padding: 1.5rem 1.2rem; }
+    .done-section { padding: 2rem 1.2rem; }
+    .peephole-nav { gap: 0.5rem; }
+    .peephole-link { font-size: 0.75rem; padding: 0.4rem 0.7rem; }
+    .done-flow { flex-direction: column; }
+    .done-flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-dots">
+    <span class="header-dot"></span>
+    <span class="header-dot"></span>
+    <span class="header-dot"></span>
+    <span class="header-dot"></span>
+    <span class="header-dot"></span>
+    <span class="header-dot"></span>
+  </div>
+  <div class="episode-tag">Season 1 · Episode 1</div>
+  <h1>The One Where Karolina<br>Starts Investing</h1>
+  <p>4 easy steps. One coffee break. Your future self will thank you. ☕</p>
+</header>
+
+<!-- NAV -->
+<nav class="peephole-nav">
+  <a href="#step1" class="peephole-link"><span class="num">1</span> Account</a>
+  <a href="#step2" class="peephole-link"><span class="num">2</span> Deposit</a>
+  <a href="#step3" class="peephole-link"><span class="num">3</span> First Buy</a>
+  <a href="#step4" class="peephole-link"><span class="num">4</span> Autopilot</a>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- WHAT YOU NEED -->
+  <div class="need-box">
+    <h2>☕ Before You Start</h2>
+    <ul>
+      <li>Your Czech ID card <em>(občanský průkaz)</em> or passport</li>
+      <li>Your bank account number <em>(číslo účtu)</em></li>
+      <li>~30 minutes of quiet time</li>
+    </ul>
+    <p class="reassure">That's it. No large sum of money needed. Could I BE any more serious?</p>
+  </div>
+
+  <!-- STEP 1 -->
+  <section class="step" id="step1">
+    <div class="step-badge"><span class="emoji">🔑</span> Step 1</div>
+    <h2>Create Your Account</h2>
+    <p class="czech-title">Založ si účet</p>
+    <span class="time-tag">⏱ ~10 minutes</span>
+
+    <ol class="instructions">
+      <li>Go to <strong><a href="https://cz.xtb.com" target="_blank">cz.xtb.com</a></strong></li>
+      <li>Click the <strong>registration button</strong></li>
+      <li>Fill in your details — name, email, phone, address</li>
+      <li>Upload your <strong>ID card photo</strong> — front and back <em>(přední a zadní strana)</em></li>
+      <li>Do the quick <strong>selfie check</strong> (biometric verification)</li>
+      <li>Answer the <strong>suitability questionnaire</strong> about your investment experience</li>
+    </ol>
+
+    <div class="callout callout-relax">
+      <span class="callout-label">🛋️ Relax — it's not a test</span>
+      The questionnaire is a legal requirement, not an exam. You can't fail it. Answer honestly. Beginners are welcome — like Ross on a dance floor, just be yourself.
+      <span class="czech">Dotazník je zákonný požadavek, ne zkouška. Nemůžeš ho nezvládnout. Odpovídej upřímně.</span>
+    </div>
+
+    <div class="callout callout-wait">
+      <span class="callout-label">⏳ Now wait 1–2 working days</span>
+      XTB will email you when your account is approved. Grab a coffee at Central Perk and come back for Step 2.
+    </div>
+
+    <div class="callout callout-info">
+      <span class="callout-label">🔒 Is XTB safe?</span>
+      XTB is regulated by the <strong>Czech National Bank (ČNB)</strong>. Your investments are held separately from XTB's own money. If XTB disappeared tomorrow, your VWRP is still legally yours.
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="step2">
+    <div class="step-badge"><span class="emoji">💰</span> Step 2</div>
+    <h2>Deposit Money</h2>
+    <p class="czech-title">Vlož peníze</p>
+    <span class="time-tag">⏱ ~5 minutes</span>
+
+    <ol class="instructions">
+      <li>Log in to your new XTB account</li>
+      <li>Click <strong>"Vklad"</strong> (Deposit)</li>
+      <li>Choose <strong>bank transfer</strong> from your Czech bank</li>
+      <li>Send <strong>2,500 – 3,500 CZK</strong> as your first deposit</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <span class="callout-label">💱 Why 2,500–3,500 CZK?</span>
+      VWRP trades in EUR. One unit costs roughly €100–130 (check the current price). This covers your first unit plus a small buffer. You deposit in CZK — XTB converts it for you automatically.
+      <span class="czech">VWRP se obchoduje v EUR. Vložíš koruny, XTB je automaticky převede.</span>
+    </div>
+
+    <div class="callout callout-wait">
+      <span class="callout-label">⏳ Money arrives in ~1 working day</span>
+      Bank transfers are usually credited within one business day. Then you're ready for the fun part.
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step" id="step3">
+    <div class="step-badge"><span class="emoji">🛒</span> Step 3</div>
+    <h2>Buy VWRP For the First Time</h2>
+    <p class="czech-title">Nakup VWRP poprvé</p>
+    <span class="time-tag">⏱ ~5 minutes</span>
+
+    <ol class="instructions">
+      <li>Find the <strong>search bar</strong> in XTB <em>(vyhledávací pole)</em></li>
+      <li>Type <strong>VWRP</strong></li>
+      <li>Find <strong>"Vanguard FTSE All-World UCITS ETF (Acc)"</strong> — ISIN: IE00BK5BQT80</li>
+      <li>Click <strong>"Nakoupit"</strong> (Buy)</li>
+      <li>Choose <strong>market order</strong> <em>(tržní příkaz)</em> — buys at the current price</li>
+      <li>Enter <strong>1 unit</strong> and confirm</li>
+    </ol>
+
+    <div class="callout callout-relax">
+      <span class="callout-label">🎉 That's it!</span>
+      You now own a slice of <strong>3,700 companies</strong> across <strong>47 countries</strong>. Like having a friend in every country — but they all make you money.
+    </div>
+
+    <div class="callout callout-warning">
+      <span class="callout-label">🚫 Do NOT search for VOO, SPY, or VTI</span>
+      These are US funds with tax problems for Czech investors. VWRP is structured to avoid those issues. It's the one. The Rachel to your Ross. (But with a better ending.)
+      <span class="czech">Nehledej VOO, SPY ani VTI — mají daňové problémy pro české investory. VWRP je ten správný.</span>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step" id="step4">
+    <div class="step-badge"><span class="emoji">🔄</span> Step 4</div>
+    <h2>Set Up Autopilot</h2>
+    <p class="czech-title">Nastav měsíční investiční plán</p>
+    <span class="time-tag">⏱ ~5 minutes</span>
+
+    <p style="margin-bottom: 1rem; font-size: 1.05rem;">This is the most important step — once done, everything runs <strong>automatically</strong> every month. No more manual buying. Like a coffee machine that never runs out.</p>
+
+    <ol class="instructions">
+      <li>Go to <strong>"Investiční plány"</strong> (Investment Plans) in XTB</li>
+      <li>Click <strong>Create a new plan</strong> <em>(Vytvořit nový plán)</em></li>
+      <li>Add <strong>VWRP</strong> and set it to <strong>100%</strong></li>
+      <li>Set monthly amount to <strong>2,000 CZK</strong></li>
+      <li>Choose a date <strong>1–3 days after your salary arrives</strong></li>
+      <li>Enable <strong>Auto Invest</strong> and confirm</li>
+    </ol>
+
+    <div class="callout callout-info">
+      <span class="callout-label">🧩 Fractional shares / Zlomkové akcie</span>
+      You invest a fixed CZK amount and XTB buys however much VWRP that covers — including partial units. No maths needed. It just works.
+    </div>
+
+    <div class="callout callout-relax">
+      <span class="callout-label">💸 Fees / Poplatky</span>
+      Creating and running the plan is <strong>free</strong>. ETF purchases are commission-free. The only cost is a 0.5% currency conversion fee (CZK → EUR) — at 2,000 CZK that's about <strong>10 CZK/month</strong>. Less than a coffee.
+    </div>
+  </section>
+
+  <!-- DONE -->
+  <section class="done-section">
+    <h2>Hotovo! You're Done! 🎉</h2>
+    <p>Here's what happens every month — without you lifting a finger:</p>
+    <div class="done-flow">
+      <span class="done-flow-step">💳 2,000 CZK taken</span>
+      <span class="done-flow-arrow">→</span>
+      <span class="done-flow-step">💱 Converted to EUR</span>
+      <span class="done-flow-arrow">→</span>
+      <span class="done-flow-step">📈 VWRP bought</span>
+      <span class="done-flow-arrow">→</span>
+      <span class="done-flow-step">🌱 Investment grows</span>
+    </div>
+    <p>Your only job now: <strong>do nothing.</strong><br>Don't check the price every day. Don't panic if it drops.</p>
+    <p>When in doubt, remember your why:</p>
+    <div class="why-quote">"I want to know that future-me is taken care of!"</div>
+  </section>
+
+  <!-- REFERENCE CARD -->
+  <div class="ref-card">
+    <h3>📋 Quick Reference / Rychlý přehled</h3>
+    <table class="ref-table">
+      <tr><td>Website</td><td><a href="https://cz.xtb.com" target="_blank">cz.xtb.com</a></td></tr>
+      <tr><td>Fund / Fond</td><td>VWRP — Vanguard FTSE All-World UCITS ETF (Acc)</td></tr>
+      <tr><td>ISIN</td><td>IE00BK5BQT80</td></tr>
+      <tr><td>Monthly / Měsíčně</td><td>2,000 CZK</td></tr>
+      <tr><td>Plan type</td><td>Investiční plán (Investment Plan)</td></tr>
+      <tr><td>Commission</td><td>Free / Zdarma</td></tr>
+      <tr><td>Conversion fee</td><td>0.5% (CZK → EUR) ≈ 10 CZK/month</td></tr>
+    </table>
+  </div>
+
+  <!-- TROUBLESHOOTING -->
+  <div class="trouble">
+    <h3>🔧 If Something Goes Wrong</h3>
+    <div class="trouble-item">
+      <strong>Can't find VWRP?</strong>
+      <span>Make sure you're in the ETF section, not CFDs. Search for the full name: "Vanguard FTSE All-World UCITS ETF Acc"</span>
+    </div>
+    <div class="trouble-item">
+      <strong>Deposit not arriving?</strong>
+      <span>Bank transfers take up to 1 working day. If longer, check with your bank first.</span>
+    </div>
+    <div class="trouble-item">
+      <strong>Questionnaire confusing?</strong>
+      <span>Just answer honestly. "Beginner" is a perfectly fine answer. You cannot fail it.</span>
+    </div>
+    <div class="trouble-item">
+      <strong>Need help?</strong>
+      <span>XTB has Czech-language support — use the chat in the platform or call them.</span>
+    </div>
+  </div>
+
+  <!-- FEES NOTICE -->
+  <div class="callout callout-wait" style="margin-bottom: 2rem;">
+    <span class="callout-label">📅 Fees verified February 2026</span>
+    Double-check current fees at <a href="https://cz.xtb.com" target="_blank">cz.xtb.com</a> before opening your account. A quick check takes 2 minutes.
+    <span class="czech">Poplatky ověřeny v únoru 2026 — doporučuji ověřit aktuální poplatky před otevřením účtu.</span>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p class="friends-sign">I'll be there for you 🎶 (and so will compound interest)</p>
+  <p>Made with ☕ by Andrew · February 2026</p>
+</footer>
+
+</body>
+</html>
